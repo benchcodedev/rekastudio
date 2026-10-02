@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architera Studio – Architecture for Inspired Living</title>
+  <meta name="description" content="Architera Studio is a contemporary architecture & spatial design practice specializing in bespoke residences, interior architecture, renovation, and sustainable construction." />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            archHero: '#f4f4f4',
+            archOrange: '#fa7c3f',
+            archOrangeDark: '#ea6422',
+            archDark: '#0c0c0c',
+            archMuted: '#666666',
+            archSubtle: '#8e8e8e',
+            archBorder: '#e5e5e5'
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            body: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-white text-archDark font-body antialiased selection:bg-archOrange selection:text-white">
+
+  <!-- =========================================================================
+       1. NAVIGATION HEADER
+       ========================================================================= -->
+  <header id="site-header" class="w-full bg-[#f4f4f4] border-b border-neutral-200/40 sticky top-0 z-40 transition-all duration-300">
+    <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14 py-4 sm:py-5 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-3 group focus:outline-none" aria-label="Architera Studio Home">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 relative flex items-center justify-center">
+          <img src="assets/images/architera/logo_mark.png" alt="Architera Logo Icon" class="w-full h-auto object-contain" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-lg sm:text-xl tracking-tight text-black leading-tight group-hover:text-archOrange transition-colors">
+            Architera
+          </span>
+          <span class="text-[11px] font-medium text-neutral-400 tracking-wider -mt-0.5">
+            Studio
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10 text-[14px] font-medium text-neutral-700" aria-label="Primary Navigation">
+        <a href="#hero" class="text-black font-semibold hover:text-archOrange transition-colors">Home</a>
+        <a href="#about" class="hover:text-black transition-colors">About</a>
+        <a href="#services" class="hover:text-black transition-colors">Service</a>
+        
+        <!-- Pages Dropdown -->
+        <div class="relative group">
+          <button type="button" class="flex items-center gap-1.5 hover:text-black transition-colors focus:outline-none" aria-haspopup="true">
+            <span>Pages</span>
+            <svg class="w-3.5 h-3.5 text-neutral-400 group-hover:text-black transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="absolute left-0 top-full pt-3 w-48 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+            <div class="bg-white rounded-xl shadow-xl border border-neutral-100 py-2 text-xs font-medium text-neutral-600">
+              <a href="#projects" class="block px-4 py-2 hover:bg-neutral-50 hover:text-black">Portfolio</a>
+              <a href="#testimonials" class="block px-4 py-2 hover:bg-neutral-50 hover:text-black">Testimonials</a>
+              <a href="#blog" class="block px-4 py-2 hover:bg-neutral-50 hover:text-black">Blog & News</a>
+              <a href="#footer" class="block px-4 py-2 hover:bg-neutral-50 hover:text-black">Contact</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Right Actions: Cart & Mobile Menu -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Cart Button -->
+        <button id="cart-btn" type="button" class="flex items-center gap-1.5 p-2 text-neutral-800 hover:text-black transition-colors focus:outline-none cursor-pointer" aria-label="Open Cart">
+          <svg class="w-5 h-5 text-neutral-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="text-xs font-semibold text-neutral-800 border border-neutral-300 rounded-full w-5 h-5 flex items-center justify-center">
+            0
+          </span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" type="button" class="md:hidden p-2 text-neutral-800 hover:text-black focus:outline-none" aria-label="Toggle Mobile Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         2. HERO SECTION
+         ========================================================================= -->
+    <section id="hero" class="bg-[#f4f4f4] relative overflow-hidden">
+      
+      <!-- DESKTOP / TABLET HERO -->
+      <div class="hidden md:block max-w-[1720px] mx-auto relative">
+        <div class="relative w-full aspect-[1723/882] select-none">
+          <img src="assets/images/architera/hero_body_exact.jpg" alt="Architera Architecture for inspired living" class="w-full h-full object-cover" />
+          
+          <!-- Interactive Studio Button Hotspot -->
+          <a href="#about" class="absolute bottom-[4.5%] right-[2.2%] w-[11.5%] h-[7.5%] cursor-pointer group" aria-label="Explore Studio">
+            <div class="w-full h-full bg-black/0 group-hover:bg-white/10 rounded-sm transition-colors flex items-center justify-center">
+              <span class="sr-only">Studio</span>
+            </div>
+          </a>
+
+          <h1 class="sr-only">Architera - Architecture for inspired living</h1>
+        </div>
+      </div>
+
+      <!-- MOBILE HERO (Optimized for smartphone screens) -->
+      <div class="md:hidden px-6 pt-8 pb-12">
+        <div>
+          <h1 class="font-display font-extrabold text-[54px] leading-[0.9] tracking-[-0.04em] text-black mb-4">
+            Architera
+          </h1>
+          <p class="font-display text-lg text-neutral-700 font-normal leading-snug mb-8">
+            Architecture for<br />inspired living
+          </p>
+        </div>
+
+        <!-- Mobile 4-Column Architectural Strip Showcase -->
+        <div class="rounded-2xl overflow-hidden shadow-md bg-neutral-100 aspect-[1/1] relative">
+          <img src="assets/images/architera/hero_strips_exact.jpg" alt="Architera Architectural Strips" class="w-full h-full object-cover" />
+          <a href="#about" class="absolute bottom-4 right-4 bg-black text-white px-4 py-2 rounded-md text-xs font-semibold tracking-wider shadow-lg">
+            Studio
+          </a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         3. SECTION 2: "EMPOWERING YOUR ARCHITECTURE JOURNEY"
+         ========================================================================= -->
+    <section id="about" class="py-16 sm:py-24 lg:py-28 bg-white">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        
+        <!-- Section Headline -->
+        <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[54px] tracking-[-0.03em] text-black leading-[1.1] mb-12 sm:mb-16 max-w-2xl">
+          Empowering your<br />architecture journey
+        </h2>
+
+        <!-- 3-Column Layout (396px : 790px : 396px proportional match) -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          
+          <!-- Left Column (Thumbnail + Explore Button) -->
+          <div class="md:col-span-3 flex flex-col justify-between gap-6 order-2 md:order-1">
+            <div class="rounded-xl overflow-hidden shadow-sm aspect-[16/10] bg-neutral-100">
+              <img src="assets/images/architera/sec2_hillside.jpg" alt="Hillside Villa Architecture" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+
+            <div>
+              <button type="button" class="open-contact-modal bg-black hover:bg-neutral-800 text-white px-7 py-3 rounded-full text-sm font-medium transition-all duration-300 inline-flex items-center gap-3 group shadow-sm cursor-pointer">
+                <span>Explore Now</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Center Column (Featured Main Villa Image) -->
+          <div class="md:col-span-6 order-1 md:order-2">
+            <div class="rounded-2xl overflow-hidden shadow-md bg-neutral-100 aspect-[16/13] w-full h-full">
+              <img src="assets/images/architera/sec2_villa_pool.jpg" alt="Modern Architecture Villa with Pool" class="w-full h-full object-cover hover:scale-103 transition-transform duration-700" />
+            </div>
+          </div>
+
+          <!-- Right Column (Description Narrative + Horizontal Dusk Image) -->
+          <div class="md:col-span-3 flex flex-col justify-between gap-6 order-3">
+            <div>
+              <p class="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
+                We're dedicated to making real estate simple and rewarding. With a commitment to excellence and a focus on building lasting relationships, our team guides clients through every step of their property journey.
+              </p>
+            </div>
+
+            <div class="rounded-xl overflow-hidden shadow-sm aspect-[16/9] bg-neutral-100">
+              <img src="assets/images/architera/sec2_dusk.jpg" alt="Architectural Residence at Dusk" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. SECTION 3: SERVICES TABBED SHOWCASE
+         ========================================================================= -->
+    <section id="services" class="py-6 sm:py-10 bg-white">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        
+        <!-- Large Architectural Photo Backdrop with 4 Vertical Accordion Tabs -->
+        <div class="relative w-full h-[480px] sm:h-[580px] lg:h-[660px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg bg-neutral-900 group">
+          
+          <!-- Background Image -->
+          <img src="assets/images/architera/services_banner_pristine.jpg" alt="Institutional Architecture Pergola" class="absolute inset-0 w-full h-full object-cover" />
+          
+          <!-- 4 Tab Columns Container -->
+          <div class="relative z-10 w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/20">
+            
+            <!-- Tab 1: Architecture (Default Active) -->
+            <div class="service-tab-col active flex flex-col justify-between p-6 sm:p-8 lg:p-10 text-white" data-service="architecture">
+              <div class="relative z-10">
+                <h3 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">Architecture</h3>
+              </div>
+              <div class="tab-detail-content relative z-10">
+                <p class="text-xs sm:text-sm text-neutral-200 line-clamp-2 mb-4">
+                  Comprehensive architectural space planning, site analysis, and innovative structural design.
+                </p>
+                <a href="#projects" class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-white hover:text-archOrange transition-colors">
+                  <span>Learn More</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Tab 2: Interior -->
+            <div class="service-tab-col flex flex-col justify-between p-6 sm:p-8 lg:p-10 text-white" data-service="interior">
+              <div class="relative z-10">
+                <h3 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">Interior</h3>
+              </div>
+              <div class="tab-detail-content relative z-10">
+                <p class="text-xs sm:text-sm text-neutral-200 line-clamp-2 mb-4">
+                  Harmonious interior spatial experiences, bespoke joinery, and curated natural materiality.
+                </p>
+                <a href="#projects" class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-white hover:text-archOrange transition-colors">
+                  <span>Learn More</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Tab 3: Renovation -->
+            <div class="service-tab-col flex flex-col justify-between p-6 sm:p-8 lg:p-10 text-white" data-service="renovation">
+              <div class="relative z-10">
+                <h3 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">Renovation</h3>
+              </div>
+              <div class="tab-detail-content relative z-10">
+                <p class="text-xs sm:text-sm text-neutral-200 line-clamp-2 mb-4">
+                  Breathing contemporary vitality into heritage structures with modern ecological retrofitting.
+                </p>
+                <a href="#projects" class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-white hover:text-archOrange transition-colors">
+                  <span>Learn More</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Tab 4: Construction -->
+            <div class="service-tab-col flex flex-col justify-between p-6 sm:p-8 lg:p-10 text-white" data-service="construction">
+              <div class="relative z-10">
+                <h3 class="font-display text-2xl sm:text-3xl font-bold tracking-tight">Construction</h3>
+              </div>
+              <div class="tab-detail-content relative z-10">
+                <p class="text-xs sm:text-sm text-neutral-200 line-clamp-2 mb-4">
+                  Precision structural execution, engineering supervision, and high-efficiency building technology.
+                </p>
+                <a href="#projects" class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-white hover:text-archOrange transition-colors">
+                  <span>Learn More</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. SECTION 4: "OUR PROJECTS" (BENTO PORTFOLIO GRID)
+         ========================================================================= -->
+    <section id="projects" class="py-16 sm:py-24 lg:py-28 bg-white">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        
+        <!-- Header Row -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div>
+            <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[54px] tracking-[-0.03em] text-black">
+              Our projects
+            </h2>
+          </div>
+          <div class="max-w-md">
+            <p class="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
+              Driven by a commitment to quality and transparency, we aim to build lasting relationships and elevate standards in the market.
+            </p>
+          </div>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="space-y-10 sm:space-y-14">
+          
+          <!-- ROW 1: 2 Large Cards (Cascade Villa & InHabit Spaces) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+            
+            <!-- Card 1: Cascade Villa -->
+            <div class="project-card group cursor-pointer">
+              <div class="rounded-xl overflow-hidden aspect-[16/10] bg-neutral-100 shadow-sm">
+                <img src="assets/images/architera/project_cascade_villa.jpg" alt="Cascade Villa" class="project-img w-full h-full object-cover" />
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-neutral-400">Architecture</span>
+                <h3 class="font-display text-xl sm:text-2xl font-bold text-black mt-1 group-hover:text-archOrange transition-colors">
+                  Cascade Villa
+                </h3>
+              </div>
+            </div>
+
+            <!-- Card 2: InHabit Spaces -->
+            <div class="project-card group cursor-pointer">
+              <div class="rounded-xl overflow-hidden aspect-[16/10] bg-neutral-100 shadow-sm">
+                <img src="assets/images/architera/project_inhabit_spaces.jpg" alt="InHabit Spaces" class="project-img w-full h-full object-cover" />
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-neutral-400">Interior</span>
+                <h3 class="font-display text-xl sm:text-2xl font-bold text-black mt-1 group-hover:text-archOrange transition-colors">
+                  InHabit Spaces
+                </h3>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ROW 2: 3 Medium Cards (UrbanLift, Renew Works, Canvas & Co) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+            
+            <!-- Card 3: UrbanLift -->
+            <div class="project-card group cursor-pointer">
+              <div class="rounded-xl overflow-hidden aspect-[4/3] bg-neutral-100 shadow-sm">
+                <img src="assets/images/architera/project_urbanlift.jpg" alt="UrbanLift" class="project-img w-full h-full object-cover" />
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-neutral-400">Construction</span>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-black mt-1 group-hover:text-archOrange transition-colors">
+                  UrbanLift
+                </h3>
+              </div>
+            </div>
+
+            <!-- Card 4: Renew Works -->
+            <div class="project-card group cursor-pointer">
+              <div class="rounded-xl overflow-hidden aspect-[4/3] bg-neutral-100 shadow-sm">
+                <img src="assets/images/architera/project_renew_works.jpg" alt="Renew Works" class="project-img w-full h-full object-cover" />
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-neutral-400">Renovation</span>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-black mt-1 group-hover:text-archOrange transition-colors">
+                  Renew Works
+                </h3>
+              </div>
+            </div>
+
+            <!-- Card 5: Canvas & Co -->
+            <div class="project-card group cursor-pointer">
+              <div class="rounded-xl overflow-hidden aspect-[4/3] bg-neutral-100 shadow-sm">
+                <img src="assets/images/architera/project_canvas_co.jpg" alt="Canvas & Co" class="project-img w-full h-full object-cover" />
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-neutral-400">Architecture</span>
+                <h3 class="font-display text-lg sm:text-xl font-bold text-black mt-1 group-hover:text-archOrange transition-colors">
+                  Canvas & Co
+                </h3>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ROW 3: Asymmetric 2 Cards (Lumière Living wide & Cornerstone Campus) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10">
+            
+            <!-- Card 6: Lumière Living (Wide ~65%) -->
+            <div class="project-card lg:col-span-8 group cursor-pointer">
+              <div class="rounded-xl overflow-hidden aspect-[16/10] bg-neutral-100 shadow-sm">
+                <img src="assets/images/architera/project_lumiere_living.jpg" alt="Lumière Living" class="project-img w-full h-full object-cover" />
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-neutral-400">Interior</span>
+                <h3 class="font-display text-xl sm:text-2xl font-bold text-black mt-1 group-hover:text-archOrange transition-colors">
+                  Lumière Living
+                </h3>
+              </div>
+            </div>
+
+            <!-- Card 7: Cornerstone Campus (Medium ~35%) -->
+            <div class="project-card lg:col-span-4 group cursor-pointer">
+              <div class="rounded-xl overflow-hidden aspect-[4/3] lg:aspect-[1/1] bg-neutral-100 shadow-sm">
+                <img src="assets/images/architera/project_cornerstone_campus.jpg" alt="Cornerstone Campus" class="project-img w-full h-full object-cover" />
+              </div>
+              <div class="mt-4">
+                <span class="text-xs font-medium text-neutral-400">Construction</span>
+                <h3 class="font-display text-xl font-bold text-black mt-1 group-hover:text-archOrange transition-colors">
+                  Cornerstone Campus
+                </h3>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. SECTION 5: TESTIMONIALS SLIDER
+         ========================================================================= -->
+    <section id="testimonials" class="py-20 sm:py-28 bg-[#f4f4f4] border-y border-neutral-200/50">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        
+        <div class="max-w-4xl mx-auto text-center relative px-4">
+          
+          <!-- Testimonial Card Container -->
+          <div class="bg-white rounded-2xl shadow-sm border border-neutral-200/40 p-8 sm:p-12 lg:p-16">
+            
+            <!-- Avatar & Author Info -->
+            <div class="flex items-center justify-center gap-4 mb-6">
+              <div class="w-14 h-14 rounded-full overflow-hidden bg-neutral-200 shrink-0">
+                <img id="testimonial-avatar" src="assets/images/architera/avatar_mark.jpg" alt="Client Avatar" class="w-full h-full object-cover transition-opacity duration-300" />
+              </div>
+              <div class="text-left">
+                <h3 id="testimonial-name" class="font-display font-bold text-lg text-black transition-opacity duration-300">
+                  Mark Steward
+                </h3>
+                <p id="testimonial-location" class="text-xs text-neutral-400 font-medium transition-opacity duration-300">
+                  London, UK
+                </p>
+              </div>
+            </div>
+
+            <!-- Quote -->
+            <p id="testimonial-quote" class="font-body text-base sm:text-lg text-neutral-700 leading-relaxed font-normal max-w-2xl mx-auto transition-opacity duration-300">
+              “ The team exceeded our expectations, transforming our space into a dream home. Every detail was handled professionally and thoughtfully. We couldn't be happier. ”
+            </p>
+
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="flex items-center justify-center gap-6 mt-8">
+            <!-- Prev Button -->
+            <button id="testimonial-prev" type="button" class="w-9 h-9 rounded-full border border-neutral-300 bg-white flex items-center justify-center text-neutral-600 hover:border-black hover:text-black transition-colors focus:outline-none cursor-pointer" aria-label="Previous Testimonial">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <!-- Dots Indicator -->
+            <div id="testimonial-dots" class="flex items-center gap-2"></div>
+
+            <!-- Next Button -->
+            <button id="testimonial-next" type="button" class="w-9 h-9 rounded-full border border-neutral-300 bg-white flex items-center justify-center text-neutral-600 hover:border-black hover:text-black transition-colors focus:outline-none cursor-pointer" aria-label="Next Testimonial">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         7. SECTION 6: "NEWS AND BLOG"
+         ========================================================================= -->
+    <section id="blog" class="py-16 sm:py-24 lg:py-28 bg-white">
+      <div class="max-w-[1720px] mx-auto px-6 sm:px-10 lg:px-14">
+        
+        <!-- Header -->
+        <div class="mb-14">
+          <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[54px] tracking-[-0.03em] text-black mb-3">
+            News and blog
+          </h2>
+          <p class="text-sm sm:text-base text-neutral-500 font-normal">
+            Discover insights, trends, and inspiration in the world of architecture.
+          </p>
+        </div>
+
+        <!-- 3-Column Articles Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+          
+          <!-- Article 1 -->
+          <article class="group cursor-pointer">
+            <div class="rounded-xl overflow-hidden aspect-[16/10] bg-neutral-100 shadow-sm">
+              <img src="assets/images/architera/blog_interior_design.jpg" alt="Interior Design Influences" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div class="mt-4">
+              <span class="text-xs text-neutral-400 font-medium">November 18, 2024</span>
+              <h3 class="font-display text-lg sm:text-xl font-bold text-black mt-2 mb-3 leading-snug group-hover:text-archOrange transition-colors">
+                Influences of Interior Design on Architecture
+              </h3>
+              <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-black group-hover:text-archOrange transition-colors">
+                <span>Read More</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="group cursor-pointer">
+            <div class="rounded-xl overflow-hidden aspect-[16/10] bg-neutral-100 shadow-sm">
+              <img src="assets/images/architera/blog_landscape_trends.jpg" alt="Landscape Architecture Trends" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div class="mt-4">
+              <span class="text-xs text-neutral-400 font-medium">November 18, 2024</span>
+              <h3 class="font-display text-lg sm:text-xl font-bold text-black mt-2 mb-3 leading-snug group-hover:text-archOrange transition-colors">
+                Emerging Trends in Landscape Architecture
+              </h3>
+              <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-black group-hover:text-archOrange transition-colors">
+                <span>Read More</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="group cursor-pointer">
+            <div class="rounded-xl overflow-hidden aspect-[16/10] bg-neutral-100 shadow-sm">
+              <img src="assets/images/architera/blog_smart_home.jpg" alt="Smart Home Integration" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <div class="mt-4">
+              <span class="text-xs text-neutral-400 font-medium">November 18, 2024</span>
+              <h3 class="font-display text-lg sm:text-xl font-bold text-black mt-2 mb-3 leading-snug group-hover:text-archOrange transition-colors">
+                Integrating Smart Home Technology
+              </h3>
+              <a href="#" class="inline-flex items-center gap-1.5 text-xs font-semibold text-black group-hover:text-archOrange transition-colors">
+                <span>Read More</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       8. SECTION 7: FOOTER ("LET'S TALK")
+       ========================================================================= -->
+  <footer id="footer" class="bg-black text-white px-6 sm:px-10 lg:px-16 pt-20 pb-12">
+    <div class="max-w-[1720px] mx-auto">
+      
+      <!-- Top CTA Banner -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-8 pb-16">
+        <div>
+          <h2 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white mb-3">
+            Let's talk
+          </h2>
+          <p class="text-sm sm:text-base text-neutral-400 font-normal">
+            Partner with us today and let's create something amazing together.
+          </p>
+        </div>
+
+        <div>
+          <button type="button" class="open-contact-modal border border-white/40 hover:bg-white hover:text-black text-white px-7 py-3 rounded-full text-sm font-medium transition-all duration-300 inline-flex items-center gap-3 group cursor-pointer">
+            <span>Contact Us</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 Columns Navigation & Contact -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 py-16">
+        
+        <!-- Col 1: Brand & Socials (4 cols) -->
+        <div class="lg:col-span-4 flex flex-col justify-between gap-8">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 relative flex items-center justify-center">
+              <img src="assets/images/architera/logo_mark.png" alt="Architera Logo Icon" class="w-full h-auto object-contain" />
+            </div>
+            <div class="flex flex-col">
+              <span class="font-display font-bold text-lg text-white leading-tight">Architera</span>
+              <span class="text-[11px] font-medium text-neutral-400 -mt-0.5">Studio</span>
+            </div>
+          </div>
+
+          <!-- Social Icon Circles (infinity, t, dribbble ball matching reference) -->
+          <div class="flex items-center gap-3">
+            <!-- Social 1: Infinity / Meta -->
+            <a href="#" class="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-black hover:bg-white transition-colors" aria-label="Meta">
+              <span class="text-sm font-bold">∞</span>
+            </a>
+            <!-- Social 2: Tumblr / Twitter t -->
+            <a href="#" class="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-black hover:bg-white transition-colors" aria-label="Twitter">
+              <span class="text-sm font-bold font-serif">t</span>
+            </a>
+            <!-- Social 3: Dribbble ball -->
+            <a href="#" class="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:text-black hover:bg-white transition-colors" aria-label="Dribbble">
+              <svg class="w-4 h-4 fill-none stroke-currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M19.13 5.09C15.22 9.14 10 10.44 2.25 10.94"></path>
+                <path d="M21.75 12.84c-6.62-1.41-12.14 1-16.38 6.32"></path>
+                <path d="M8.53 2.74c3.48 4.7 5.76 10.74 6.7 18.52"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Pages (3 cols) -->
+        <div class="lg:col-span-3">
+          <h4 class="font-display font-bold text-base text-white mb-5">Pages</h4>
+          <ul class="space-y-3 text-sm text-neutral-400">
+            <li><a href="#hero" class="hover:text-white transition-colors">Home</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+            <li><a href="#projects" class="hover:text-white transition-colors">Portfolio</a></li>
+            <li><a href="#blog" class="hover:text-white transition-colors">Blog</a></li>
+            <li><a href="#footer" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Utilities (2 cols) -->
+        <div class="lg:col-span-2">
+          <h4 class="font-display font-bold text-base text-white mb-5">Utilities</h4>
+          <ul class="space-y-3 text-sm text-neutral-400">
+            <li><a href="#" class="hover:text-white transition-colors">Style Guide</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Licenses</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Changelog</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact (3 cols) -->
+        <div class="lg:col-span-3">
+          <h4 class="font-display font-bold text-base text-white mb-5">Contact</h4>
+          <ul class="space-y-3 text-sm text-neutral-400">
+            <li>(555) 123-4567</li>
+            <li><a href="mailto:info@yoursite.com" class="hover:text-white transition-colors">info@yoursite.com</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Credits -->
+      <div class="pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+        <div>
+          <span>Architera | Design by Kitpro Studio</span>
+        </div>
+        <div>
+          <span>Powered by Webflow</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODALS & DRAWERS
+       ========================================================================= -->
+
+  <!-- 1. Mini-Cart Slide-Over Drawer -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl translate-x-full invisible transition-all duration-300 flex flex-col justify-between p-8">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-neutral-200">
+        <h3 class="font-display font-bold text-xl text-black">Your Cart</h3>
+        <button id="cart-drawer-close" type="button" class="p-2 text-neutral-500 hover:text-black cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Empty Cart State -->
+      <div class="py-20 text-center">
+        <div class="w-16 h-16 mx-auto mb-4 text-neutral-300 flex items-center justify-center rounded-full bg-neutral-100">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+          </svg>
+        </div>
+        <p class="text-neutral-500 text-sm">No items found.</p>
+      </div>
+    </div>
+
+    <div>
+      <button type="button" class="w-full bg-black text-white py-3.5 rounded-full text-sm font-semibold hover:bg-neutral-800 transition-colors cursor-pointer">
+        Continue Shopping
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. Project Detail Modal -->
+  <div id="project-modal" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 sm:p-6">
+    <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+      <button id="modal-project-close" type="button" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors cursor-pointer">
+        ✕
+      </button>
+      <div class="aspect-[16/10] bg-neutral-100">
+        <img id="modal-project-img" src="" alt="" class="w-full h-full object-cover" />
+      </div>
+      <div class="p-6 sm:p-8">
+        <span id="modal-project-category" class="text-xs uppercase font-semibold text-archOrange tracking-wider"></span>
+        <h3 id="modal-project-title" class="font-display text-2xl font-bold text-black mt-1 mb-3"></h3>
+        <p id="modal-project-desc" class="text-sm sm:text-base text-neutral-600 leading-relaxed"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Consultation / Contact Modal -->
+  <div id="contact-modal" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 sm:p-6">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-8 shadow-2xl relative">
+      <button id="contact-modal-close" type="button" class="absolute top-5 right-5 text-neutral-400 hover:text-black cursor-pointer">
+        ✕
+      </button>
+      <h3 class="font-display text-2xl font-bold text-black mb-2">Start a Conversation</h3>
+      <p class="text-sm text-neutral-500 mb-6">Tell us about your upcoming architectural project or vision.</p>
+      
+      <form id="contact-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-neutral-700 uppercase mb-1">Your Name</label>
+          <input type="text" required class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 focus:outline-none focus:border-black text-sm" placeholder="John Doe" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-neutral-700 uppercase mb-1">Email Address</label>
+          <input type="email" required class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 focus:outline-none focus:border-black text-sm" placeholder="john@example.com" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-neutral-700 uppercase mb-1">Project Discipline</label>
+          <select class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 focus:outline-none focus:border-black text-sm bg-white">
+            <option>Architecture</option>
+            <option>Interior</option>
+            <option>Renovation</option>
+            <option>Construction</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-neutral-700 uppercase mb-1">Message</label>
+          <textarea rows="3" required class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 focus:outline-none focus:border-black text-sm" placeholder="Brief project scope, site location, timeline..."></textarea>
+        </div>
+        <button type="submit" class="w-full bg-black text-white py-3 rounded-full text-sm font-semibold hover:bg-neutral-800 transition-colors mt-2 cursor-pointer">
+          Submit Message
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Mobile Navigation Drawer -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 bg-black/95 z-50 flex flex-col justify-between p-8 text-white opacity-0 pointer-events-none transition-opacity duration-300 md:hidden">
+    <div>
+      <div class="flex items-center justify-between pb-8 border-b border-neutral-800">
+        <div class="flex items-center gap-3">
+          <img src="assets/images/architera/logo_mark.png" alt="Architera Logo" class="w-7 h-7 object-contain" />
+          <span class="font-display font-bold text-lg">Architera</span>
+        </div>
+        <button id="mobile-menu-close" type="button" class="p-2 text-neutral-400 hover:text-white cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-6 py-12 text-2xl font-bold font-display">
+        <a href="#hero" class="mobile-nav-link hover:text-archOrange transition-colors">Home</a>
+        <a href="#about" class="mobile-nav-link hover:text-archOrange transition-colors">About</a>
+        <a href="#services" class="mobile-nav-link hover:text-archOrange transition-colors">Service</a>
+        <a href="#projects" class="mobile-nav-link hover:text-archOrange transition-colors">Portfolio</a>
+        <a href="#testimonials" class="mobile-nav-link hover:text-archOrange transition-colors">Testimonials</a>
+        <a href="#blog" class="mobile-nav-link hover:text-archOrange transition-colors">News & Blog</a>
+        <a href="#footer" class="mobile-nav-link hover:text-archOrange transition-colors">Contact</a>
+      </nav>
+    </div>
+
+    <div>
+      <p class="text-xs text-neutral-500">Architera Studio © 2024</p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
